@@ -1,0 +1,122 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.codzunk.buckleup"
+        minSdkVersion 22
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+ext {
+    // Version
+    supportVersion = '27.1.1'
+    // Support Libraries dependencies
+    supportDependencies = [
+            design              : "com.android.support:design:${supportVersion}",
+            recyclerView        : "com.android.support:recyclerview-v7:${supportVersion}",
+            cardView            : "com.android.support:cardview-v7:${supportVersion}",
+            appCompat           : "com.android.support:appcompat-v7:${supportVersion}",
+            supportAnnotation   : "com.android.support:support-annotations:${supportVersion}",
+            support_v4          : "com.android.support:support-v4:${supportVersion}",
+            support_media_compat: "com.android.support:support-media-compat:${supportVersion}",
+            customtabs          : "com.android.support:customtabs:${supportVersion}"
+    ]
+    firebaseVersion = '16.0.1'
+    // Firebase dependencies
+    firebase = [
+            core        : "com.google.firebase:firebase-core:${firebaseVersion}",
+            database    : "com.google.firebase:firebase-database:${firebaseVersion}",
+            storage     : "com.google.firebase:firebase-storage:${firebaseVersion}",
+            crash       : "com.google.firebase:firebase-crash:${firebaseVersion}",
+            auth        : "com.google.firebase:firebase-auth:${firebaseVersion}",
+            messaging   : "com.google.firebase:firebase-messaging:${firebaseVersion}",
+            remoteConfig: "com.google.firebase:firebase-config:${firebaseVersion}",
+            invites     : "com.google.firebase:firebase-invites:${firebaseVersion}",
+            adMod       : "com.google.firebase:firebase-ads:${firebaseVersion}",
+            appIndexing : "com.google.android.gms:play-services-appindexing:${firebaseVersion}",
+    ]
+    gsonVersion = '2.8.1'
+    // Gson dependencies
+    gsonDependencies = [
+            gson: "com.google.code.gson:gson:${gsonVersion}"
+    ]
+    calligraphyVersion = '2.3.0'
+    // Calligraphy dependencies
+    calligraphyDependencies = [
+            calligraphy: "uk.co.chrisjenx:calligraphy:${calligraphyVersion}"
+    ]
+    // Picasso
+    picassoVersion = '2.5.2'
+    picassoDependencies = [
+            picasso: "com.squareup.picasso:picasso:${picassoVersion}"
+    ]
+    //Retrofit2
+    retrofit2Version = '2.3.0'
+    retrofit2Dependencies = [
+            retrofit      : "com.squareup.retrofit2:retrofit:${retrofit2Version}",
+            converter_gson: "com.squareup.retrofit2:converter-gson:${retrofit2Version}",
+    ]
+
+    svgVersion = '1.0.1'
+    svgLoader = [
+            loader: "com.github.ar-android:AndroidSvgLoader:${svgVersion}"
+    ]
+
+    playServiceVersion = '15.0.1'
+
+    playService = [
+            admob: "com.google.android.gms:play-services-ads:${playServiceVersion}",
+            places: "com.google.android.gms:play-services-places:${playServiceVersion}",
+            maps: "com.google.android.gms:play-services-maps:${playServiceVersion}",
+            location: "com.google.android.gms:play-services-location:${playServiceVersion}",
+            gcm: "com.google.android.gms:play-services-gcm:${playServiceVersion}"
+    ]
+
+    mapUtilsVersion = '0.5'
+    mapUtils = [
+            utils: "com.google.maps.android:android-maps-utils:${mapUtilsVersion}"
+    ]
+
+    jsoupVersion = '1.10.3'
+    jsoupDependency =  [
+            jsoup: "org.jsoup:jsoup:${jsoupVersion}"
+    ]
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation supportDependencies.appCompat
+    implementation supportDependencies.support_v4
+    implementation supportDependencies.support_media_compat
+    implementation supportDependencies.design
+    implementation supportDependencies.cardView
+    implementation supportDependencies.customtabs
+    implementation gsonDependencies.gson
+    implementation calligraphyDependencies.calligraphy
+    implementation picassoDependencies.picasso
+    implementation retrofit2Dependencies.retrofit
+    implementation retrofit2Dependencies.converter_gson
+    implementation playService.admob
+    implementation playService.places
+    implementation playService.maps
+    implementation playService.location
+    implementation mapUtils.utils
+    implementation firebase.database
+    implementation firebase.core
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+apply plugin: 'com.google.gms.google-services'
